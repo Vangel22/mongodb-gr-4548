@@ -2,7 +2,12 @@ const express = require("express");
 
 const connect = require("./db/config");
 connect();
-const { createUser } = require("./controllers/usersController");
+const {
+  createUser,
+  getAllUsers,
+  getSingleUser,
+  updateUser,
+} = require("./controllers/usersController");
 // require("./db/config");
 
 const app = express();
@@ -10,6 +15,9 @@ const app = express();
 app.use(express.json());
 
 app.post("/users", createUser);
+app.get("/users", getAllUsers);
+app.get("/users/:id", getSingleUser);
+app.put("/users/:id", updateUser);
 
 app.listen(3000, () => {
   console.log("Server is listening!");

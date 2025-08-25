@@ -52,6 +52,38 @@ const create = async (data) => {
   return await user.save();
 };
 
+// Read
+// const getById = async (id) => {
+//     return await UserModel.findOne({ _id: id })
+// }
+
+const getById = async (_id) => {
+  return await UserModel.findOne({ _id });
+};
+
+const getAll = async () => {
+  return await UserModel.find();
+};
+
+const getByEmail = async () => {};
+
+// Update
+
+const update = async (id, data) => {
+  return await UserModel.updateOne({ _id: id }, data);
+};
+
+// Delete
+
+const remove = async () => {};
+
+// TODO: Implementirajte gi getByEmail i remove
+
 module.exports = {
   create,
+  getAll,
+  getById,
+  getByEmail,
+  update,
+  remove,
 };
