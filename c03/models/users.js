@@ -65,7 +65,9 @@ const getAll = async () => {
   return await UserModel.find();
 };
 
-const getByEmail = async () => {};
+const getByEmail = async (email) => {
+  return await UserModel.findOne({ email });
+};
 
 // Update
 
@@ -75,7 +77,9 @@ const update = async (id, data) => {
 
 // Delete
 
-const remove = async () => {};
+const remove = async (_id) => {
+  return await UserModel.deleteOne({ _id });
+};
 
 // TODO: Implementirajte gi getByEmail i remove
 

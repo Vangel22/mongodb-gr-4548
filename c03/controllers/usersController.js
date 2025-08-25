@@ -4,6 +4,7 @@ const {
   getById,
   update,
   getByEmail,
+  remove,
 } = require("../models/users");
 
 const createUser = async (req, res) => {
@@ -48,6 +49,8 @@ const updateUser = async (req, res) => {
 
 const getUserByEmail = async (req, res) => {
   try {
+    const foundUser = await getByEmail(req.params.email);
+    return res.status(200).send(foundUser);
   } catch (err) {
     console.log(err);
     return res.status(500).send("Invalid Server Error!");
@@ -56,6 +59,8 @@ const getUserByEmail = async (req, res) => {
 
 const removeUser = async (req, res) => {
   try {
+    await remove(req.params.id);
+    return res.status(200).send("Successfully deleted!");
   } catch (err) {
     console.log(err);
     return res.status(500).send("Invalid Server Error!");
